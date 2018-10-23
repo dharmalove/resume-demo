@@ -72,6 +72,7 @@ a{text-decoration: none;color: inherit}
     max-width: 940px;
     margin: 0 auto;
     background: #ffffff;
+    box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.3);
 }
 .userCard .pictureAndText{
     padding: 50px;
@@ -129,17 +130,45 @@ a{text-decoration: none;color: inherit}
 .userCard .media >a{
     display: inline-block;
     width: 40px;
-    line-height: 30px;
-    padding: 5px 0;
+    line-height: 20px;
+    padding: 10px 0;
     border-radius: 50%;
     margin: 16px;
 }
 .userCard .media svg{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     fill: #ffffff;
     vertical-align: top;
 }
 .userCard .media >a:hover{
     background: #CF5D5F;
+}
+body >main{
+    margin-top: -340px;
+}
+body >main .download-wrapper{
+    text-align: center;
+}
+body >main .download{
+    display: inline-block;
+    font-size: 14px;
+    line-height: 16px;
+    padding: 21px 55px;
+    border: 1px solid #CDCFD1;
+    background: #EFEFEF;
+    border-radius: 2px;
+    color: #3D4451;
+    font-weight: bold;
+    margin: 32px 0;
+    transition: box-shadow 0.3s;
+}
+body >main .download:hover{
+    box-shadow: 0px 4px 13px 0px rgba(0,0,0,0.3);
+}
+body >main .selfIntroduction{
+    max-width: 940px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 16px;
 }
