@@ -221,7 +221,7 @@ section.portfolio >nav{
     text-align: center;
     display: inline-block;
     vertical-align: top;
-    margin-top: 32px;
+    margin: 32px auto;
 }
 section.portfolio >nav >ol{
     margin: 0 auto;
@@ -231,10 +231,32 @@ section.portfolio >nav >ol{
 section.portfolio >nav >ol >li{
     float: left;
     margin-left: 40px;
+    cursor: pointer;
 }
 section.portfolio >nav >ol >li:first-child{
     margin-left: 0px;
 }
 section.portfolio .sliderBar{
-
+    height: 5px;
+    background: white;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+section.portfolio .sliderBar-inner{
+    height: 100%;
+    background: #E6686A;
+    border-radius: 3px;
+    transition: all 2s;
+}
+section.portfolio .sliderBar.state-1 .sliderBar-inner{
+    margin-left: 0;
+    width: 32px;
+}
+section.portfolio .sliderBar.state-2 .sliderBar-inner{
+    margin-left: 70px;
+    width: 36px;
+}
+section.portfolio .sliderBar.state-3 .sliderBar-inner{
+    margin-left: 140px;
+    width: 56px;
 }
