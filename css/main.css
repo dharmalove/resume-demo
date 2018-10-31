@@ -216,6 +216,7 @@ section.skills .progress{
 }
 section.portfolio{
     text-align: center;
+    margin-bottom: 100px;
 }
 section.portfolio >nav{
     text-align: center;
@@ -246,7 +247,7 @@ section.portfolio .sliderBar-inner{
     height: 100%;
     background: #E6686A;
     border-radius: 3px;
-    transition: all 2s;
+    transition: all 1.5s;
 }
 section.portfolio .sliderBar.state-1 .sliderBar-inner{
     margin-left: 0;
@@ -259,4 +260,12 @@ section.portfolio .sliderBar.state-2 .sliderBar-inner{
 section.portfolio .sliderBar.state-3 .sliderBar-inner{
     margin-left: 140px;
     width: 56px;
+}
+section.portfolio .works{
+    position: relative;
+    height: 620px;
+}
+section.portfolio .works .big,
+section.portfolio .works .small{
+    position: absolute;
 }
