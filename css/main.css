@@ -248,15 +248,15 @@ section.portfolio .sliderBar-inner{
     border-radius: 3px;
     transition: all 2s;
 }
-section.portfolio .sliderBar.state-1 .sliderBar-inner{
+section.portfolio .sliderBar.state1 .sliderBar-inner{
     margin-left: 0;
     width: 32px;
 }
-section.portfolio .sliderBar.state-2 .sliderBar-inner{
+section.portfolio .sliderBar.state2 .sliderBar-inner{
     margin-left: 70px;
     width: 36px;
 }
-section.portfolio .sliderBar.state-3 .sliderBar-inner{
+section.portfolio .sliderBar.state3 .sliderBar-inner{
     margin-left: 140px;
     width: 56px;
 }
