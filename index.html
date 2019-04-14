@@ -7,7 +7,10 @@
 </head>
 <script src="//at.alicdn.com/t/font_882898_bfomhllizy.js"></script>
 <body>
-    <div class="topNavBar">
+    <div id="siteWelcome" class="siteWelcome active">
+        <div class="loading"></div>
+    </div>
+    <div id="topNavBar" class="topNavBar">
         <div class="topNavBar_inner clearfix">
             <a class="logo" href="#" alt="logo">
                 <span class="rs">RS</span>
@@ -15,13 +18,37 @@
             </a>
             <nav>
                 <ul class="clearfix">
-                    <li><a href="#">关于</a></li>
-                    <li><a href="#">技能</a></li>
-                    <li><a href="#">作品</a></li>
-                    <li><a href="#">博客</a></li>
-                    <li><a href="#">日历</a></li>
-                    <li><a href="#">联系方式</a></li>
-                    <li><a href="#">其他</a></li>
+                    <li>
+                        <a href="#">关于</a>
+                    </li>
+                    <li>
+                        <a href="#">技能</a>
+                    </li>
+                    <li class="menuTigger">
+                        <a href="#">作品</a>
+                        <ul class="submenu">
+                            <li>作品1</li>
+                            <li>作品2</li>
+                            <li>作品3</li>
+                        </ul>
+                    </li>
+                    <li class="menuTigger">
+                        <a href="#">博客</a>
+                        <ul class="submenu">
+                            <li>博客1</li>
+                            <li>博客2</li>
+                            <li>博客3</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">日历</a>
+                    </li>
+                    <li>
+                        <a href="#">联系方式</a>
+                    </li>
+                    <li>
+                        <a href="#">其他</a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -159,7 +186,6 @@
 </body>
 <script>
     portfolio1.onclick=function(){
-<<<<<<< HEAD
         portfolioBar.ClassName = "sliderBar state1"
     }
     portfolio2.onclick=function(){
@@ -167,15 +193,34 @@
     }
     portfolio3.onclick=function(){
         portfolioBar.ClassName = "sliderBar state3"
-=======
-        portfolioBar.className = "sliderBar state-1"
     }
-    portfolio2.onclick=function(){
-        portfolioBar.className = "sliderBar state-2"
+</script>
+<script>
+    setTimeout(function(){
+        siteWelcome.classList.remove('active')
+    },1000)
+
+    window.onscroll = function(e){
+        if(window.scrollY > 0){
+            topNavBar.classList.add('sticky')
+        }else{
+            topNavBar.classList.remove('sticky')
+        }
+
     }
-    portfolio3.onclick=function(){
-        portfolioBar.className = "sliderBar state-3"
->>>>>>> 81483b5e8d0be2e7f3b31154ecb7adedfb6ffe83
+
+    let liTags = document.getElementsByClassName('menuTigger')
+    for(let i = 0; i < liTags.length; i++){
+        liTags[i].onmouseenter = function(e){
+            let li = e.currentTarget
+            let brother = li.getElementsByTagName('ul')[0]
+            brother.classList.add('active')
+        }
+        liTags[i].onmouseleave = function(e){
+            let li = e.currentTarget
+            let brother = li.getElementsByTagName('ul')[0]
+            brother.classList.remove('active')
+        }
     }
 </script>
 </html>
