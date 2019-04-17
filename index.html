@@ -16,24 +16,24 @@
                 <span class="rs">RS</span>
                 <span class="card">card</span>
             </a>
-            <nav>
+            <nav class="menu">
                 <ul class="clearfix">
                     <li>
-                        <a href="#">关于</a>
+                        <a href="#siteAbout">关于</a>
                     </li>
                     <li>
-                        <a href="#">技能</a>
+                        <a href="#siteSkills">技能</a>
                     </li>
-                    <li class="menuTigger">
-                        <a href="#">作品</a>
+                    <li>
+                        <a href="#siteProjects">作品</a>
                         <ul class="submenu">
                             <li>作品1</li>
                             <li>作品2</li>
                             <li>作品3</li>
                         </ul>
                     </li>
-                    <li class="menuTigger">
-                        <a href="#">博客</a>
+                    <li>
+                        <a href="#siteBlog">博客</a>
                         <ul class="submenu">
                             <li>博客1</li>
                             <li>博客2</li>
@@ -41,13 +41,13 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="#">日历</a>
+                        <a href="#siteCalendar">日历</a>
                     </li>
                     <li>
-                        <a href="#">联系方式</a>
+                        <a href="#siteContents">联系方式</a>
                     </li>
                     <li>
-                        <a href="#">其他</a>
+                        <a href="#siteOthers">其他</a>
                     </li>
                 </ul>
             </nav>
@@ -56,11 +56,11 @@
     <div class="banner">
         <div class="mask"></div>
     </div>
-    <main>
+    <main id="siteAbout">
         <div class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
-                    <img src="https://i.loli.net/2018/12/01/5c029cd850b52.jpg" width=299 height= 399 alt="头像">
+                    <img src="http://pp125ix60.bkt.clouddn.com/myself.jpg" width=299 height= 399 alt="头像">
                 </div>
                 <div class="text">
                     <span class="welcome">Hello<span class="triangle"></span></span>
@@ -118,7 +118,7 @@
             技能：前端开发、React 开发、vue 开发
         </p>
     </main>
-    <section class="skills">
+    <section id="siteSkills" class="skills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -159,7 +159,7 @@
             </li>
         </ol>
     </section>
-    <section class="portfolio">
+    <section id="siteProjects" class="portfolio">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -185,13 +185,13 @@
     </section>
 </body>
 <script>
-    portfolio1.onclick=function(){
+    portfolio1.onclick = function(){
         portfolioBar.ClassName = "sliderBar state1"
     }
-    portfolio2.onclick=function(){
+    portfolio2.onclick = function(){
         portfolioBar.ClassName = "sliderBar state2"
     }
-    portfolio3.onclick=function(){
+    portfolio3.onclick = function(){
         portfolioBar.ClassName = "sliderBar state3"
     }
 </script>
@@ -209,17 +209,25 @@
 
     }
 
-    let liTags = document.getElementsByClassName('menuTigger')
+    let liTags = document.querySelectorAll('nav.menu > ul > li')
     for(let i = 0; i < liTags.length; i++){
         liTags[i].onmouseenter = function(e){
-            let li = e.currentTarget
-            let brother = li.getElementsByTagName('ul')[0]
-            brother.classList.add('active')
+            e.currentTarget.classList.add('active')
         }
         liTags[i].onmouseleave = function(e){
-            let li = e.currentTarget
-            let brother = li.getElementsByTagName('ul')[0]
-            brother.classList.remove('active')
+            e.currentTarget.classList.remove('active')
+        }
+    }
+    
+    let aTags = document.querySelectorAll('nav.menu > ul > li > a')
+    for(let i = 0; i < aTags.length; i++){
+        aTags[i].onclick = function(e){
+            e.preventDefault()
+            let a = e.currentTarget
+            let href = a.getAttribute('href')
+            let element = document.querySelector(href)
+            let top = element.offsetTop
+            window.scrollTo(0, top - 80)
         }
     }
 </script>
