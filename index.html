@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>个人简历</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <script src="//at.alicdn.com/t/font_882898_7q1ct248le.js"></script>
+
 <body>
     <div id="siteWelcome" class="siteWelcome active">
         <div class="loading"></div>
@@ -60,7 +62,7 @@
         <div class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
-                    <img src="https://i.loli.net/2019/12/19/eLgN4ofjvQUqnKT.jpg" width=299 height= 399 alt="头像">
+                    <img src="https://i.loli.net/2019/12/19/eLgN4ofjvQUqnKT.jpg" width=299 height=399 alt="头像">
                 </div>
                 <div class="text">
                     <span class="welcome">Hello<span class="triangle"></span></span>
@@ -129,13 +131,13 @@
             <li>
                 <p>HTML &amp; CSS</p>
                 <div class="progress-wrapper">
-                    <div class="progress" style="width:75%;"></div>
+                    <div class="progress" style="width:70%;"></div>
                 </div>
             </li>
             <li>
                 <p>HTTP</p>
                 <div class="progress-wrapper">
-                    <div class="progress" style="width:80%;"></div>
+                    <div class="progress" style="width:48%;"></div>
                 </div>
             </li>
             <li>
@@ -153,13 +155,13 @@
             <li>
                 <p>Vue</p>
                 <div class="progress-wrapper">
-                    <div class="progress" style="width:65%;"></div>
+                    <div class="progress" style="width:60%;"></div>
                 </div>
             </li>
             <li>
                 <p>React</p>
                 <div class="progress-wrapper">
-                    <div class="progress" style="width:68%;"></div>
+                    <div class="progress" style="width:52%;"></div>
                 </div>
             </li>
         </ol>
@@ -190,50 +192,64 @@
     </section>
 </body>
 <script>
-    portfolio1.onclick = function(){
+    portfolio1.onclick = function () {
         portfolioBar.className = "sliderBar state1"
     }
-    portfolio2.onclick = function(){
+    portfolio2.onclick = function () {
         portfolioBar.className = "sliderBar state2"
     }
-    portfolio3.onclick = function(){
+    portfolio3.onclick = function () {
         portfolioBar.className = "sliderBar state3"
     }
 </script>
 <script>
-    setTimeout(function(){
+    setTimeout(function () {
         siteWelcome.classList.remove('active')
-    },1000)
+    }, 1000)
 
-    window.onscroll = function(e){
-        if(window.scrollY > 0){
+    window.onscroll = function (e) {
+        if (window.scrollY > 0) {
             topNavBar.classList.add('sticky')
-        }else{
+        } else {
             topNavBar.classList.remove('sticky')
         }
-
     }
 
     let liTags = document.querySelectorAll('nav.menu > ul > li')
-    for(let i = 0; i < liTags.length; i++){
-        liTags[i].onmouseenter = function(e){
+    for (let i = 0; i < liTags.length; i++) {
+        liTags[i].onmouseenter = function (e) {
             e.currentTarget.classList.add('active')
         }
-        liTags[i].onmouseleave = function(e){
+        liTags[i].onmouseleave = function (e) {
             e.currentTarget.classList.remove('active')
         }
     }
-    
+
     let aTags = document.querySelectorAll('nav.menu > ul > li > a')
-    for(let i = 0; i < aTags.length; i++){
-        aTags[i].onclick = function(e){
+    for (let i = 0; i < aTags.length; i++) {
+        aTags[i].onclick = function (e) {
             e.preventDefault()
             let a = e.currentTarget
             let href = a.getAttribute('href')
             let element = document.querySelector(href)
             let top = element.offsetTop
-            window.scrollTo(0, top - 80)
+
+            let n = 300
+            let aTime = 1000 / n
+            let currentTop = window.scrollY
+            let targetTop = top - 80
+            let distance = (targetTop - currentTop) / n
+            let i = 0
+            let move = setInterval(() => {
+                if (i === n) {
+                    window.clearInterval(move)
+                    return
+                }
+                i = i + 1
+                window.scrollTo(0, currentTop + distance * i)
+            })
         }
     }
 </script>
+
 </html>
