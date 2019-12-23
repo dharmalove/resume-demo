@@ -8,6 +8,7 @@
 </head>
 <script src="//at.alicdn.com/t/font_882898_7q1ct248le.js"></script>
 
+
 <body>
     <div id="siteWelcome" class="siteWelcome active">
         <div class="loading"></div>
@@ -191,6 +192,7 @@
         </div>
     </section>
 </body>
+<script src="https://libs.cdnjs.net/tween.js/r14/Tween.js"></script>
 <script>
     portfolio1.onclick = function () {
         portfolioBar.className = "sliderBar state1"
@@ -234,20 +236,26 @@
             let element = document.querySelector(href)
             let top = element.offsetTop
 
-            let n = 300
-            let aTime = 1000 / n
-            let currentTop = window.scrollY
-            let targetTop = top - 80
-            let distance = (targetTop - currentTop) / n
-            let i = 0
-            let move = setInterval(() => {
-                if (i === n) {
-                    window.clearInterval(move)
-                    return
-                }
-                i = i + 1
-                window.scrollTo(0, currentTop + distance * i)
-            })
+
+            let currentTop = window.scrollY //当前位置
+            let targetTop = top - 80 //目标位置
+            let distance = targetTop - currentTop //滑动距离
+            var t = Math.abs((distance / 100) * 300) //滑动时间 规定300毫秒滑动100像素
+            if(t > 500){ t = 500} //设定最大滑动时长500毫秒
+            function animate(time) {
+                requestAnimationFrame(animate);
+                TWEEN.update(time);
+            }
+            requestAnimationFrame(animate);
+
+            var coords = { y: currentTop }; 
+            var tween = new TWEEN.Tween(coords) 
+                .to({ y: targetTop }, t)
+                .easing(TWEEN.Easing.Quadratic.InOut) 
+                .onUpdate(function() { 
+                    window.scrollTo(0,coords.y)
+                })
+                .start();
         }
     }
 </script>
