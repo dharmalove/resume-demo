@@ -10,9 +10,9 @@
 
 
 <body>
-    <div id="siteWelcome" class="siteWelcome active">
+    <!-- <div id="siteWelcome" class="siteWelcome active">
         <div class="loading"></div>
-    </div>
+    </div> -->
     <div id="topNavBar" class="topNavBar">
         <div class="topNavBar_inner clearfix">
             <a class="logo" href="#" alt="logo">
@@ -59,7 +59,7 @@
     <div class="banner">
         <div class="mask"></div>
     </div>
-    <main id="siteAbout">
+    <main data-x id="siteAbout">
         <div class="userCard">
             <div class="pictureAndText clearfix">
                 <div class="picture">
@@ -126,7 +126,7 @@
             技能：前端开发、React 开发、vue 开发
         </p>
     </main>
-    <section id="siteSkills" class="skills">
+    <section data-x id="siteSkills" class="skills">
         <h2>技能</h2>
         <ol class="clearfix">
             <li>
@@ -167,7 +167,7 @@
             </li>
         </ol>
     </section>
-    <section id="siteProjects" class="portfolio">
+    <section data-x id="siteProjects" class="portfolio">
         <h2>作品集</h2>
         <nav>
             <ol class="clearfix">
@@ -205,17 +205,41 @@
     }
 </script>
 <script>
-    setTimeout(function () {
-        siteWelcome.classList.remove('active')
-    }, 1000)
 
+    let specialTags = document.querySelectorAll('[data-x]') 
+    for(i = 0; i < specialTags.length; i++){
+        specialTags[i].classList.add('offset')
+    }
+
+    findClosest()
     window.onscroll = function (e) {
         if (window.scrollY > 0) {
             topNavBar.classList.add('sticky')
         } else {
             topNavBar.classList.remove('sticky')
         }
+        findClosest()
     }
+    function findClosest() {
+        let specialTags = document.querySelectorAll('[data-x]')
+        let minIndex = 0
+        for (let i = 0; i < specialTags.length; i++) {
+            if (Math.abs(specialTags[i].offsetTop - window.scrollY) < Math.abs(specialTags[minIndex].offsetTop - window.scrollY)) {
+                minIndex = i
+            }
+        }
+        specialTags[minIndex].classList.remove('offset')
+        let id = specialTags[minIndex].id
+        let a = document.querySelector('a[href="#' + id + '"]')
+        let li = a.parentNode
+        let brotherAndMe = li.parentNode.children
+        for (let i = 0; i < brotherAndMe.length; i++) {
+            brotherAndMe[i].classList.remove('highlight')
+        }
+        li.classList.add('highlight')
+    }
+
+
 
     let liTags = document.querySelectorAll('nav.menu > ul > li')
     for (let i = 0; i < liTags.length; i++) {
@@ -241,19 +265,19 @@
             let targetTop = top - 80 //目标位置
             let distance = targetTop - currentTop //滑动距离
             var t = Math.abs((distance / 100) * 300) //滑动时间 规定300毫秒滑动100像素
-            if(t > 500){ t = 500} //设定最大滑动时长500毫秒
+            if (t > 500) { t = 500 } //设定最大滑动时长500毫秒
             function animate(time) {
                 requestAnimationFrame(animate);
                 TWEEN.update(time);
             }
             requestAnimationFrame(animate);
 
-            var coords = { y: currentTop }; 
-            var tween = new TWEEN.Tween(coords) 
+            var coords = { y: currentTop };
+            var tween = new TWEEN.Tween(coords)
                 .to({ y: targetTop }, t)
-                .easing(TWEEN.Easing.Quadratic.InOut) 
-                .onUpdate(function() { 
-                    window.scrollTo(0,coords.y)
+                .easing(TWEEN.Easing.Quadratic.InOut)
+                .onUpdate(function () {
+                    window.scrollTo(0, coords.y)
                 })
                 .start();
         }

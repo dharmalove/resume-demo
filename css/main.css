@@ -2,8 +2,16 @@
 ul,li{list-style: none;}
 body{background: #EFEFEF;}
 a{text-decoration: none;color: inherit}
+[data-x]{
+    transform: translateY(0);
+}
+[data-x].offset{
+    transform: translateY(150px);
+    transition: all 1s;
+}
 .icon {
-    width: 1em; height: 1em;
+    width: 1em; 
+    height: 1em;
     vertical-align: -0.15em;
     fill: currentColor;
     overflow: hidden;
@@ -111,7 +119,8 @@ a{text-decoration: none;color: inherit}
     display: block;
     position: relative;
 }
-.topNavBar nav >ul >li.active >a::after{
+.topNavBar nav >ul >li.active >a::after,
+.topNavBar nav >ul >li.highlight >a::after{
     content: '';
     display: block;
     position: absolute;
@@ -304,12 +313,18 @@ section.skills .progress-wrapper{
     background: #FAE1E1;
     border-radius: 3px;
     margin: 4px 0 40px;
+    overflow: hidden;
 }
-section.skills .progress{
+section.skills .progress-wrapper .progress{
     height: 100%;
     width: 70%;
     background: #E6686A;
     border-radius: 3px;
+    transform: translateX(0);
+    transition: all 1s;
+}
+section.skills.offset .progress{
+    transform: translateX(-100%);
 }
 section.portfolio{
     text-align: center;
